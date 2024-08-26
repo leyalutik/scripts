@@ -1,0 +1,4 @@
+#!/bin/bash
+
+ls -a ~/git/scripts
+#ls -a  "/data/data/com.termux/files/home/leya/SCRIPTS"

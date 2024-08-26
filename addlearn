@@ -1,0 +1,74 @@
+#!/bin/bash
+
+option=1
+intro_text="INPUT OPTION (1/2) (default (learn words)) and press ENTER ..."
+
+while [[ option -ne 3 ]] ; do
+	echo "		Menu "
+	echo -------------------------------------
+	echo "Continue		(Enter)"
+	echo "Learn words		(1)"
+	echo "Add words		(2)"
+	echo "-----------"
+	echo "  END			(3)"
+	echo ------------------------------------
+	echo .
+	echo .
+	echo ${intro_text}
+	intro_text="INPUT OPTION (1/2) (default (previous option)) and press ENTER ..."
+	read -p "option = " new_option
+
+	if [ -n "$new_option" ] ; then
+		option=$new_option
+	fi
+
+
+	if [ $option -eq 1 ] ; then
+		while IFS= read -r url; do
+			termux-open-url "$url"
+			sleep 5
+		done < learning_words.txt
+
+	elif [[ $option -eq 2 ]] ; then 
+
+		list_sites=($(cat "sites.txt"))
+
+
+		echo INPUT the word \(for learning\) and press ENTER ...
+		read -p "word = " word
+		echo The WORD\'s saved. Press Enter ...
+		read 
+
+
+
+	for url_source in "${list_sites[@]}" ; do
+		echo  "Go to the site "$url_source" ? (Y)es/(n)o " 
+
+		read -p "answer  = " yes
+
+		if [ -z "$yes" ] || [ "$yes" = "Y" ] || [ "$yes" = "y" ] ; then 
+			echo INSERT the word from clipboard in site $url_source.\n Press ENTER ...
+
+		echo COPY the site address with WORD description.
+		echo "INSERT (ctrl+alt+V)  here the site address. Press Enter ..."
+		echo "$word" | termux-clipboard-set
+		echo word = "$word"
+		echo The WORD\'s saved in CLIPboard. Press Enter ...
+
+		termux-open-url "$url_source"
+		read -p "url = "  url
+				echo "$url" >> learning_words.txt
+		fi
+
+	done
+
+
+
+
+
+	fi
+
+
+done
+
+

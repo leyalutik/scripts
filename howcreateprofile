@@ -1,0 +1,17 @@
+echo
+echo Commands for file profile in etc/profile
+echo 
+
+echo export \"PATH=$PATH:/data/data/com.termux/files/home/leya/SCRIPTS:/data/data/com.termux/files/home/leya/git/scripts\"                               
+echo "export EDITOR=vim"           
+echo
+echo "alias ll='ls -a'"
+echo  "alias gs='git status'"                                                    
+echo "alias ..='cd ..'"
+echo alias pgs= 'cd "/data/data/com.termux/files/home/leya/git/scripts"'
+echo
+echo "mkcd()"
+echo "{"
+echo "        mkdir -p \"\$1\""     
+echo "        cd \"\$1\""
+echo "}"
