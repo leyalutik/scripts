@@ -9,4 +9,8 @@ echo Enter the key ...
 read p
 echo Input the BRANCH name for pushing to this branch
 read BRANCH
-git push -u origin $BRANCH
+echo {List of git-remote}
+git remote show
+echo Input remote name
+read REMOTE_NAME
+git push -u "$REMOTE_NAME" "$BRANCH"
