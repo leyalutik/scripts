@@ -24,17 +24,9 @@ while [[ option -ne 3 ]] ; do
 
 
 	if [ $option -eq 1 ] ; then
-		read -p "Input number line which will be start one = " LINE
-		i=0
 		while IFS= read -r url; do
-			if [ $i >  $LINE ] ; then  
-				termux-open-url "$url"
-				sleep 5
-			else 
-				i=$i+1
-			fi
-
-			
+			termux-open-url "$url"
+			sleep 5
 		done < learning_words.txt
 
 	elif [[ $option -eq 2 ]] ; then 
