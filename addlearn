@@ -17,21 +17,29 @@ while [[ option -ne 3 ]] ; do
 	echo ${intro_text}
 	intro_text="INPUT OPTION (1/2) (default (previous option)) and press ENTER ..."
 	read -p "option = " new_option
-
 	if [ -n "$new_option" ] ; then
 		option=$new_option
 	fi
+	if [ $option -eq 1 ] ; then 
+		read -p "Input number line which will be start one = " LINE
+	#	if [ -z "$LINE" ] ; then
+	#		LINE=0
+	#	fi
+	fi
+
+
+
 
 
 	if [ $option -eq 1 ] ; then
-		read -p "Input number line which will be start one = " LINE
 		i=0
+		echo "LINE = $LINE "
 		while IFS= read -r url; do
-			if [ $i >  $LINE ] ; then  
-				termux-open-url "$url"
+			if [ $i -gt  $LINE ] ; then  
+				termux-open-url "$url" & < /dev/null
 				sleep 5
 			else 
-				i=$i+1
+				i=$((i+1))
 			fi
 
 			
