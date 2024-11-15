@@ -33,7 +33,8 @@ if(A[0] > A[1])
 	}
 }
 
-
+#ifndef TEST_ABSTRACT_CPP
+                 
 
 int main()
 {
@@ -62,3 +63,6 @@ int main()
 	return 0;
 
 }
+
+
+  #endif
