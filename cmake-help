@@ -1,0 +1,69 @@
+#!/bin/bash
+
+# Функция для отображения меню
+show_menu() {
+  echo "CMake Help Menu"
+  echo "1. Variables List"
+  echo "2. Commands List"
+  echo "3. Manuals List"
+  echo "4. Full Manual"
+  echo "5. Enter Variable"
+  echo "6. Enter Command"
+  echo "0. Exit"
+  echo "Select an option:"
+}
+
+# Показать меню
+show_menu
+read -p "Enter your choice: " choice
+
+# Обработка выбора
+case $choice in
+  1)
+    echo "Executing: cmake --help-variable-list"
+    read -n 1 -s -r -p "Press any key to execute..."
+    echo
+    cmake --help-variable-list
+    ;;
+  2)
+    echo "Executing: cmake --help-command-list"
+    read -n 1 -s -r -p "Press any key to execute..."
+    echo
+    cmake --help-command-list
+    ;;
+  3)
+    echo "Executing: cmake --help-manual-list"
+    read -n 1 -s -r -p "Press any key to execute..."
+    echo
+    cmake --help-manual-list
+    ;;
+  4)
+    echo "Executing: cmake --help-full"
+    read -n 1 -s -r -p "Press any key to execute..."
+    echo
+    cmake --help-full
+    ;;
+  5)
+    echo "Input variable:"
+    read var
+    echo "Executing: cmake --help-variable ${var}"
+    read -n 1 -s -r -p "Press any key to execute..."
+    echo
+    cmake --help-variable "${var}"
+    ;;
+  6)
+    echo "Input command:"
+    read com
+    echo "Executing: cmake --help-command ${com}"
+    read -n 1 -s -r -p "Press any key to execute..."
+    echo
+    cmake --help-command "${com}"
+    ;;
+  0)
+    echo "Exiting..."
+    ;;
+  *)
+    echo "Invalid option. Please try again."
+    ;;
+esac
+

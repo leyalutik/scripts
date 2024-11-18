@@ -1,4 +1,26 @@
 #!/bin/bash
 
-ls -a ~/git/scripts
+#!/bin/bash
+
+# Разбиваем $PATH на отдельные пути и обходим их в цикле
+for path in $(echo $PATH | tr ":" "\n"); do
+  # Проверяем, содержит ли путь слово "scripts"
+  if [[ "$path" == *scripts* ]]; then
+    result=$path
+    break
+  fi
+done
+
+# Если путь найден, выводим файлы
+if [[ -n "$result" ]]; then
+  echo "Path containing 'scripts': $result"
+  echo "Files in $result:"
+  ls "$result"
+else
+  echo "No path containing 'scripts' found."
+fi
+
+
+
+#ls  "~/git/scripts"
 #ls -a  "/data/data/com.termux/files/home/leya/SCRIPTS"
